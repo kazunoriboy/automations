@@ -40,3 +40,10 @@ chmod +x ./setup.sh
 gl 1401
 ```
 
+### 5.downしたい時は引数にdownを渡すべし
+
+例
+```
+gl down
+```
+
