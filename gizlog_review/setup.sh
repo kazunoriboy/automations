@@ -25,6 +25,7 @@ if [ $count == 0 ]; then
     echo 'ブランチがないので、リモートから引っ張ってきます'
     echo '---------------------------------------'
     echo ''
+    git -C $path_to_prj$app_dir fetch origin $branch
     git -C $path_to_prj$app_dir checkout -b $branch "origin/${branch}"
 else
     echo '---------------------------------------'
