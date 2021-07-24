@@ -68,3 +68,4 @@ echo ''
 
 open http://localhost:8080
 
+exit 0
