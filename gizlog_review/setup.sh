@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ $1 ==  '' ]; then
+if [ $1 =  '' ]; then
     echo '引数が必要です'
     exit 1
 fi
@@ -8,7 +8,7 @@ fi
 # !!!アプリケーションまでのパスとディレクトリ構成は任意で変更してください!!!
 path_to_prj=$HOME/Giztech/Backlog_Gizlog/
 app_dir=www/dev_gizlog
-if [ $1 == 'down' ]; then
+if [ $1 = 'down' ]; then
     cd $path_to_prj
         docker-compose down
     exit 0
@@ -20,7 +20,7 @@ fi
 branch="feature/GL-${1}"
 count=$(git -C $path_to_prj$app_dir branch | grep "\s*$branch"$ | wc -l)
 
-if [ $count == 0 ]; then
+if [ $count = 0 ]; then
     echo '---------------------------------------'
     echo 'ブランチがないので、リモートから引っ張ってきます'
     echo '---------------------------------------'
