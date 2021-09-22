@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if [ $1 =  '' ]; then
     echo '引数が必要です'
@@ -56,6 +56,7 @@ echo ''
 echo 'ゴゴゴゴゴゴゴゴゴゴゴゴゴゴ......'
 
 cd $path_to_prj$app_dir
+    composer install
     composer dump-autoload
 docker-compose exec web php artisan migrate:fresh --seed
 
