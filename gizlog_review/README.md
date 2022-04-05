@@ -16,32 +16,40 @@ gizlogの挙動確認をお助けするためのスクリプトです。
 
 ## 使い方
 
-### 1.setup.shで変数を編集
+### 1.env.exampleをコピーし、.envを作成
 
-```shell
-# 自分の環境にあったパスにする（docker-compose.ymlと同じディレクトリ）
-path_to_prj=$HOME/Giztech/Backlog_Gizlog/
-# ここは変えないと思うけど、変更している場合は合わせる
-app_dir=www/dev_gizlog
+```
+cp .env.example .env
 ```
 
-### 2.setup.shに実行権限追加
+### 2.環境変数を設定
+
+環境変数はローカルのパス（コンテナ内のパスではないので注意）
+```shell
+# アプリケーションのルートまでの絶対パスを記載
+PRJ_PATH="$HOME/Giztech/gizlog/"
+
+# docker-compose.ymlがあるディレクトリまでの絶対パスを記載
+APP_PATH="${PRJ_PATH}src/"
+```
+
+### 3.setup.shに実行権限追加
 
 ```shell
 chmod +x ./setup.sh
 ```
 
-### 3.aliasに追加（任意）
+### 4.aliasに追加（任意）
 何でもいいと思いますが、僕はglで実行できるようにしました。
 
-### 4.引数にチケット番号だけ渡してコマンドを実行
+### 5.引数にチケット番号だけ渡してコマンドを実行
 
 例
 ```shell
 gl 1401
 ```
 
-### 5.downしたい時は引数にdownを渡すべし
+### 6.downしたい時は引数にdownを渡すべし
 
 例
 ```
