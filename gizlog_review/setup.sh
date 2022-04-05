@@ -5,8 +5,8 @@ if [ $1 =  '' ]; then
     exit 1
 fi
 
-# !!!アプリケーションまでのパスとディレクトリ構成は任意で変更してください!!!
-source ./.env
+SCRIPT_DIR=$(cd $(dirname $0) && pwd)
+source ${SCRIPT_DIR}/.env
 
 if [ $1 = 'down' ]; then
     cd $PRJ_PATH
