@@ -6,10 +6,10 @@ if [ $1 =  '' ]; then
 fi
 
 # !!!アプリケーションまでのパスとディレクトリ構成は任意で変更してください!!!
-path_to_prj=$HOME/Giztech/Backlog_Gizlog/
-app_dir=www/dev_gizlog
+source ./.env
+
 if [ $1 = 'down' ]; then
-    cd $path_to_prj
+    cd $PRJ_PATH
         docker-compose down
     exit 0
 elif [[ !($1 =~ ^[0-9]+$) ]]; then
@@ -18,21 +18,21 @@ elif [[ !($1 =~ ^[0-9]+$) ]]; then
 fi
 
 branch="feature/GL-${1}"
-count=$(git -C $path_to_prj$app_dir branch | grep "\s*$branch"$ | wc -l)
+count=$(git -C $APP_PATH branch | grep "\s*$branch"$ | wc -l)
 
 if [ $count = 0 ]; then
     echo '---------------------------------------'
     echo 'ブランチがないので、リモートから引っ張ってきます'
     echo '---------------------------------------'
     echo ''
-    git -C $path_to_prj$app_dir fetch origin $branch
-    git -C $path_to_prj$app_dir checkout -b $branch "origin/${branch}"
+    git -C $APP_PATH fetch origin $branch
+    git -C $APP_PATH checkout -b $branch "origin/${branch}"
 else
     echo '---------------------------------------'
     echo 'ブランチがあるので、チェックアウトして最新にします'
     echo '---------------------------------------'
     echo ''
-    git -C $path_to_prj$app_dir checkout $branch && git -C $path_to_prj$app_dir pull origin $branch
+    git -C $APP_PATH checkout $branch && git -C $APP_PATH pull origin $branch
 fi
 
 echo ''
@@ -42,7 +42,7 @@ echo '---------------------------------------'
 echo 'ウィーーーーーーン........'
 echo ''
 
-cd $path_to_prj
+cd $PRJ_PATH
     docker-compose up -d
 
 echo '---------------------------------------'
