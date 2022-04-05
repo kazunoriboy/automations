@@ -55,10 +55,9 @@ echo '---------------------------------------'
 echo ''
 echo 'ゴゴゴゴゴゴゴゴゴゴゴゴゴゴ......'
 
-cd $path_to_prj$app_dir
-    composer install
-    composer dump-autoload
-docker-compose exec web php artisan migrate:fresh --seed
+docker-compose exec php-fpm composer install
+docker-compose exec php-fpm composer dump-autoload
+docker-compose exec php-fpm php artisan migrate:fresh --seed
 
 echo ''
 echo '---------------------------------------'
